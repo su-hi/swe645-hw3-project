@@ -20,7 +20,8 @@ pipeline{
 				script{
 					checkout scm
 					sh 'rm -rf *.war'
-					sh 'mvn package'
+					def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
+					sh "${mvnHome}/bin/mvn package"
 					sh 'echo ${BUILD_TIMESTAMP}'
 					sh 'docker login  -u khadijakobra -p ${DOCKERHUB_PASS}'
 					def customimage=docker.build("khadijakobra/hw3:${BUILD_ID}")
