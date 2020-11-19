@@ -23,7 +23,7 @@ public class FormResource {
 	private FormRepository formRepository;
 	
 	@CrossOrigin
-	@GetMapping("/form")
+	@GetMapping("/forms")
 	public List<Form> retrieveAllForms() {
 		return formRepository.findAll();
 	}
